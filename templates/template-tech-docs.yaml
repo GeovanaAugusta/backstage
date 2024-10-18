@@ -1,0 +1,11 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: my-docs
+  description: Documentação para o Meu Projeto
+  annotations:
+    backstage.io/techdocs-ref: 'dir:docs'
+spec:
+  type: docs
+  lifecycle: experimental
+  owner: my-team

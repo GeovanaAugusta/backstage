@@ -94,7 +94,7 @@ catalog:
       rules:
         - allow: [Template]
 
-    # Adicionando um segundo template
+    # Adicionando um terceiro template
     - type: file
       target: ../../templates/template-tech-docs.yaml
       rules:
