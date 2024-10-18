@@ -88,6 +88,18 @@ catalog:
       rules:
         - allow: [Template]
 
+    # Adicionando um segundo template
+    - type: file
+      target: ../../templates/template.yaml
+      rules:
+        - allow: [Template]
+
+    # Adicionando um segundo template
+    - type: file
+      target: ../../templates/template-tech-docs.yaml
+      rules:
+        - allow: [Template]
+
     # Local example organizational data
     - type: file
       target: ../../examples/org.yaml

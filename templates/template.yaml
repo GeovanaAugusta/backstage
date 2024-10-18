@@ -1,0 +1,52 @@
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: python-flask-service
+  title: Create a Python Flask Service
+  description: Scaffold a new Python Flask service
+  tags:
+    - python
+    - flask
+    - service
+spec:
+  owner: your-team@example.com
+  type: service
+
+  parameters:
+    - title: Fill in some basic information
+      required:
+        - name
+        - owner
+      properties:
+        name:
+          title: Name
+          type: string
+          description: Unique name of the service
+        owner:
+          title: Owner
+          type: string
+          description: Who is the owner of the service
+
+  steps:
+    - id: fetch-repo
+      name: Fetch repository
+      action: git:clone
+      input:
+        url: '{{ parameters.repoUrl }}'
+        targetPath: './repo'
+
+    - id: template
+      name: Prepare the template
+      action: cookiecutter:template
+      input:
+        url: 'https://github.com/your-org/python-flask-template.git'
+        values:
+          name: '{{ parameters.name }}'
+          owner: '{{ parameters.owner }}'
+
+    - id: publish
+      name: Publish the service
+      action: github:publish
+      input:
+        repoUrl: '{{ parameters.repoUrl }}'
+        description: 'Python Flask service generated from Backstage template'
